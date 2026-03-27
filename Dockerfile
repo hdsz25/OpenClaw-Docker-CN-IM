@@ -40,8 +40,8 @@ RUN apt-get update && \
     printf 'LANG=en_US.UTF-8\nLANGUAGE=en_US:en\nLC_ALL=en_US.UTF-8\n' > /etc/default/locale && \
     # 配置 git 使用 HTTPS 替代 SSH
     git config --system url."https://github.com/".insteadOf ssh://git@github.com/ && \
-    # 更新 npm 并安装全局包
-    npm install -g npm@latest && \
+    # 设置 npm 镜像并安装全局包
+    npm config set registry https://registry.npmmirror.com && \
     npm install -g openclaw@2026.3.24 opencode-ai@latest clawhub playwright playwright-extra puppeteer-extra-plugin-stealth @steipete/bird && \
     # 安装 bun、uv 和 qmd
     curl -fsSL https://bun.sh/install | BUN_INSTALL=/usr/local bash && \
